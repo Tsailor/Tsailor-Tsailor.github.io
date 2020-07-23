@@ -1,6 +1,7 @@
-## 总结 ##  
-各功能具体实现过程见readMe.md  
-
+---
+  tags: Webpack
+  title: webpack搭建React开发环境
+---
 ### 1 webpack搭建react项目 ###  
 以前总是使用脚手架工具直接创建，今天试试webpack手动创建react 项目 
 
@@ -10,20 +11,27 @@
 webpack和babel在打包的时候不会包括到源码里，所以是 - div  
 系统提示说："-dev"已经不推荐使用了，使用 "--only=dev"代替  
 webpack-cli 包含了许多webpack的指令。  
+<!--more--> 
 4、 安装babel     
-```npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --only=dev```  
+```javascript
+npm install @babel/core babel-loader @babel/preset-env @babel/preset-react--only=dev
+```
 @babel/core 这是babel的核心库   
 @babel/preset-env  将es6编译成es5  
 @babel/preset-react  识别JSX语法
-babel-loader     将经过babel处理后的文件输出成浏览器可以识别的格式  
-5、 配置babel，根目录下新建.babelrc文件  
-写入
+babel-loader     将经过babel处理后的文件输出成浏览器可以识别的格式
+
+
+
+5、 配置babel，根目录下新建.babelrc文件,写入:
+```javascript
+{  "presets": ["@babel/preset-env", "@babel/preset-react"]   }
 ```
-{
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
-}
-```  
-6、 配置webpack, 新建 ```webpack.config.js ``` 
+6、 配置webpack, 新建 文件
+
+webpack.config.js 
+
+配置如下：
 ```javascript
 const path = require('path');  //引入路径
 
@@ -45,11 +53,13 @@ module.exports = {      //  导出
       ]
     }
   };  
-```  
-7、解析HTML文件，webpack的默认配置只能解析.js文件。安装``` html-webpack-plugin```  
+```
+
+7、解析HTML文件，webpack的默认配置只能解析.js文件。安装插件：html-webpack-plugin 
 ```javascript
 npm i html-webpack-plugin --only=dev
 ```
+
 再配置插件 
 ```javascript
 const HtmlWebpackPlugin = require('html-webpack-plugin')  // 引入
@@ -84,7 +94,10 @@ package.json中，scripts标签里加入
             }
           ]
 ```  
-13、抽离css样式到独立的文件```javascript npm install --save-dev mini-css-extract-plugin```    
+13、抽离css样式到独立的文件
+```javascript 
+npm install --save-dev mini-css-extract-plugin
+```    
   配置参照npm文档  
 
 
