@@ -6,22 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Blog</title>
+  <title>JS深拷贝与浅拷贝 | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content="沉默寡言是亮仔"> -->
-  
-  <meta name="description" content="沉默寡言是亮仔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="JS数据类型划分：基本数据类型：string,number,boolean,null,undefined引用数据类型：Object(包括 Array,String,Function,Math,Date等) JS内存分为堆（heap）和栈（stack）栈：由系统自动分配，自动回收，效率高，但容量小。堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS深拷贝与浅拷贝">
+<meta property="og:url" content="http://yoursite.com/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="沉默寡言是亮仔">
+<meta property="og:description" content="JS数据类型划分：基本数据类型：string,number,boolean,null,undefined引用数据类型：Object(包括 Array,String,Function,Math,Date等) JS内存分为堆（heap）和栈（stack）栈：由系统自动分配，自动回收，效率高，但容量小。堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-23T02:12:21.288Z">
 <meta property="article:author" content="Tsailor">
+<meta property="article:tag" content="JS基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
@@ -161,383 +160,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-Git分支管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-JS深拷贝与浅拷贝" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" target="_blank">Git分支管理</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" class="archive-article-date">
-        <time datetime="2020-07-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1、git创建本地分支：<code>git branch [name]</code><br>2、git删除本地分支：<code>git branch -d [name]</code><br>3、git切换分支：<code>git checkout [name]</code><br>4、git创建并切换到新的本地分支：<code>git checkout -b [name]</code><br>5、git查看所有分支信息：<code>git branch -a</code> </p>
-    
-    <a class="article-more-a" href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-webpack创建React开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/07/22/webpack%E5%88%9B%E5%BB%BAReact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_blank">webpack创建React开发环境</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/07/22/webpack%E5%88%9B%E5%BB%BAReact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="archive-article-date">
-        <time datetime="2020-07-22T15:12:59.323Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>各功能具体实现过程见readMe.md  </p>
-<h3 id="1-webpack搭建react项目"><a href="#1-webpack搭建react项目" class="headerlink" title="1 webpack搭建react项目"></a>1 webpack搭建react项目</h3><p>以前总是使用脚手架工具直接创建，今天试试webpack手动创建react 项目 </p>
-<p>1、 新建src 文件夹存放react代码  <code>mkdir src</code><br>2、 初始化项目   <code>npm init -y</code><br>3、 安装webpack <code>npm i webpack webpack-cli -dev</code><br>webpack和babel在打包的时候不会包括到源码里，所以是 - div<br>系统提示说：”-dev”已经不推荐使用了，使用 “–only=dev”代替<br>webpack-cli 包含了许多webpack的指令。<br>4、 安装babel     </p>
-<figure class="highlight plain"><figcaption><span>install @babel/core babel-loader @babel/preset-env @babel/preset-react --only</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@babel&#x2F;core 这是babel的核心库   </span><br><span class="line">@babel&#x2F;preset-env  将es6编译成es5  </span><br><span class="line">@babel&#x2F;preset-react  识别JSX语法</span><br><span class="line">babel-loader     将经过babel处理后的文件输出成浏览器可以识别的格式  </span><br><span class="line">5、 配置babel，根目录下新建.babelrc文件  </span><br><span class="line">写入</span><br></pre></td></tr></table></figure>
-<p>{<br>  “presets”: [“@babel/preset-env”, “@babel/preset-react”]<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">6、 配置webpack, 新建 &#96;&#96;&#96;webpack.config.js &#96;&#96;&#96; </span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">const path &#x3D; require(&#39;path&#39;);  &#x2F;&#x2F;引入路径</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;      &#x2F;&#x2F;  导出</span><br><span class="line">    entry: &#39;.&#x2F;src&#x2F;main.js&#39;,    &#x2F;&#x2F;    项目入口</span><br><span class="line">    output: &#123;                  &#x2F;&#x2F;    输出 </span><br><span class="line">      filename: &#39;bundle.js&#39;,    &#x2F;&#x2F;    打包后的名字</span><br><span class="line">      path: path.resolve(__dirname, &#39;dist&#39;)   &#x2F;&#x2F;  当前路径下</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          test: &#x2F;\.js$&#x2F;,         &#x2F;&#x2F;  打包 .js文件</span><br><span class="line">          exclude: &#x2F;node_modules&#x2F;,</span><br><span class="line">          use: &#123;</span><br><span class="line">            loader: &quot;babel-loader&quot;    &#x2F;&#x2F;  使用 babel-loader</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;  </span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">7、解析HTML文件，webpack的默认配置只能解析.js文件。安装&#96;&#96;&#96; html-webpack-plugin&#96;&#96;&#96;  </span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">npm i html-webpack-plugin --only&#x3D;dev</span><br></pre></td></tr></table></figure>
-<p>再配置插件 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)  <span class="comment">// 引入</span></span><br><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">        title: <span class="string">'load-files'</span>,</span><br><span class="line">        template: <span class="string">'index.html'</span>   <span class="comment">//  模板</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>8、安装react、react-dom<br><code>npm install react react-dom --save</code><br>9、 安装，启动webpack-dev-server  </p>
-<pre><code class="javascript">npm install webpack-dev-server --save-dev</code></pre>
-<p>package.json中，scripts标签里加入  </p>
-<pre><code class="javascript"><span class="string">"start:dev"</span>: <span class="string">"webpack-dev-server"</span></code></pre>
-<p>10、执行<code>npm run start:dev</code><br>11、打包命令，npx webpack<br>12、 配置解析css的loader  ,<code>npm install --save-dev css-loader style-loader</code>顺序先下后上</p>
-<pre><code class="javascript">[
-           { <span class="attr">loader</span>: <span class="string">'style-loader'</span> },   <span class="comment">//  将style插入到模板里</span>
-           {
-             loader: <span class="string">'css-loader'</span>,    <span class="comment">//   解析css</span>
-             options: {
-               modules: <span class="literal">true</span>
-             }
-           }
-         ]</code></pre>
-<p>13、抽离css样式到独立的文件<code>javascript npm install --save-dev mini-css-extract-plugin</code><br>  配置参照npm文档  </p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/07/22/webpack%E5%88%9B%E5%BB%BAReact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS数组去重的多种方式比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/" target="_blank">JS数组去重的多种方式比较</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/" class="archive-article-date">
-        <time datetime="2020-07-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1、双重for循环</p>
-<p>时间复杂度（O^2）,所有方式中时间开销最大。<br>仅仅去除数组中的基本类型元素（不包含 NaN,NaN!==NaN）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">distinct</span>(<span class="params">arr</span>)</span>&#123;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;       </span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">let</span> j=i+<span class="number">1</span>;j&lt;arr.length;j++)&#123;        </span><br><span class="line">            <span class="keyword">if</span>(arr[j]===arr[i])&#123;            </span><br><span class="line">                arr.splice(j,<span class="number">1</span>);                </span><br><span class="line">                j--;            </span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a" href="/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS手动实现new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/" target="_blank">JS手动实现new</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/" class="archive-article-date">
-        <time datetime="2020-06-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>new 构造函数()<br>执行顺序<br>1、在堆内存开辟对象内存空间，命名为obj;<br>2、在obj中添加<strong>proto</strong>属性，指向 构造函数.prototype;<br>3、更改this指向，将构造函数内的this指向obj;<br>4、执行构造函数内语句；<br>5、若构造函数内没有return或者没有return this、return基本数据类型的值，则返回obj在堆内存中地址;若return引用类型，则返回这个引用类型。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;    </span><br><span class="line">    <span class="keyword">this</span>.name=name;   </span><br><span class="line">    <span class="keyword">this</span>.age=age;    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">12</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per=<span class="keyword">new</span> Person(<span class="string">"jack"</span>,<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(per);      <span class="comment">//Person &#123; name: "jack", age: 18&#125;</span></span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS深拷贝与浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" target="_blank">JS深拷贝与浅拷贝</a>
-  
+    <h1 class="article-title" itemprop="name">
+      JS深拷贝与浅拷贝
     </h1>
   
 
@@ -551,6 +181,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -560,13 +211,84 @@
     <p>JS数据类型划分：<br>基本数据类型：string,number,boolean,null,undefined<br>引用数据类型：Object(包括 Array,String,Function,Math,Date等)</p>
 <p>JS内存分为堆（heap）和栈（stack）<br>栈：由系统自动分配，自动回收，效率高，但容量小。<br>堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。</p>
 <p>JS的基本类型分配在栈中。</p>
-    
-    <a class="article-more-a" href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/#more">more >></a>
-    
-    
+<a id="more"></a>
+<p>而因为<strong>引用类型大小的不固定，系统将存储该引用类型的地址存在栈中，并赋值给变量本身，而具体的内容存在堆中。</strong><br>所以当访问一个对象的时候，先访问栈中它的地址，然后按照这个地址去堆中找到它的实际内容。</p>
+<p>当复制的时候，对于基本类型的变量，系统会为新的变量在栈中开辟一个新的空间，赋予相同的值，然后这两个变量就各自独立，毫无牵连。<br>而对于引用类型的变量，新的变量复制的是那个<strong>对象在堆中的地址</strong>，这两个变量指向的是同一个对象。</p>
+<p>JS的基本类型不存在浅拷贝还是深拷贝的问题，主要是针对于对象，比如一般的对象，和特殊的数组对象。</p>
+<p><strong>浅拷贝是指复制对象的时候，指对第一层键值对进行独立的复制。</strong></p>
+<p>浅拷贝实现方式1：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shaCopy</span>(<span class="params">source</span>)</span>&#123;   <span class="comment">//浅拷贝    </span></span><br><span class="line">    <span class="keyword">var</span> target=&#123;&#125;;    </span><br><span class="line">    <span class="keyword">if</span>(!source||<span class="keyword">typeof</span> source!== <span class="string">"Object"</span>)       </span><br><span class="line">       <span class="keyword">return</span>;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> source)&#123;      </span><br><span class="line">       target[key]=source[key];    </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a=&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">age</span>:<span class="number">18</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> res=shaCopy(a);<span class="built_in">console</span>.log(res);  </span><br><span class="line">    <span class="comment">//  &#123;name: "jack", age: 18&#125;</span></span><br><span class="line">res.age=<span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// &#123;name: "jack", age: 18&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//  &#123;name: "jack", age: 20&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>浅拷贝实现方式2：</p>
+<p>Object.assign是ES6的新函数。<br>Object.assign()<br>方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。<br>但是 Object.assign()<br>进行的是浅拷贝，拷贝的是对象的属性的引用，而不是对象本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(target, ...sources)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<p>target：目标对象。<br>sources：任意多个源对象。<br>返回值：目标对象会被返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">friend</span>:&#123; <span class="attr">name</span>:<span class="string">"tom"</span>,<span class="attr">age</span>:<span class="number">18</span> &#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> res1=<span class="built_in">Object</span>.assign(&#123;&#125;,obj1);<span class="built_in">console</span>.log(res1)  |</span><br><span class="line">   <span class="comment">// &#123; name:"jack", friend:&#123; name:"tom",age:18 &#125;&#125;  </span></span><br><span class="line">    <span class="comment">//但是修改res1中friend对应的属性，obj1中friend对应的属性也会改变res1.friend. |</span></span><br><span class="line">name=<span class="string">"lili"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);   <span class="comment">// &#123; name:"jack", friend:&#123; name:"lili",age:18 &#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>那如何完全独立地拷贝出一份呢？这也就是所谓的深拷贝。</strong></p>
+<p>深拷贝实现方式1：</p>
+<p>Object.assign();<br>当对象只有一层时，Object.assign()也能实现深拷贝。</p>
+<p>深拷贝实现方式2：<br>用JSON.stringify把对象转成字符串，再用JSON.parse把字符串转成新的对象。</p>
+<p>但是只有对象内属性值不为undefined和Function时可用。</p>
+<p>深拷贝实现方式3：<br>递归实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (!source ||<span class="keyword">typeof</span> source !== <span class="string">"object"</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        <span class="keyword">var</span> value = source[key]; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span></span><br><span class="line">            value === <span class="string">'object'</span>) &#123;  <span class="comment">//属性值是数组或对象     </span></span><br><span class="line">            target[key] = deepClone(value)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            target[key]= value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;; </span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; </span><br><span class="line">    name: <span class="string">"jake"</span>,</span><br><span class="line">    friend: &#123; </span><br><span class="line">        name: <span class="string">"Tom"</span>,</span><br><span class="line">        address: &#123;</span><br><span class="line">            city: <span class="string">"Beijing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> res1=deepClone(obj1);  </span><br><span class="line">res1.friend.address.city = <span class="string">"ShangHai"</span>;</span><br><span class="line">    <span class="comment">//属性值为对象</span></span><br><span class="line"><span class="built_in">console</span>.log(res1);      <span class="comment">//  &#123; name: "jake", friend: &#123;name: "Tom", address: &#123; city: "ShangHai" &#125;&#125;&#125;; </span></span><br><span class="line"><span class="built_in">console</span>.log(obj1);      <span class="comment">// &#123; name:"jake",friend: &#123; name: "Tom", address: &#123; city: "Beijing"&#125;&#125;&#125;;</span></span><br><span class="line"><span class="comment">//属性值为数组</span></span><br><span class="line"><span class="keyword">var</span> obj2=&#123; <span class="attr">name</span>:<span class="string">"jake"</span>,<span class="attr">friend</span>:[ <span class="number">13</span>,<span class="number">24</span>,[<span class="number">19</span>,<span class="number">20</span>,<span class="number">18</span>] ]&#125;; </span><br><span class="line"><span class="keyword">var</span>  res2 = deepClone(obj2); </span><br><span class="line">res2.friend[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span>; </span><br><span class="line"><span class="built_in">console</span>.log(res2);    <span class="comment">// &#123; name: "jake", friend: [13, 24, [19, 0, 18]]&#125;; </span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);    <span class="comment">// &#123; name:"jake",friend:[ 13,24,[19,20,18] ]&#125;;</span></span><br></pre></td></tr></table></figure>
+<p>深拷贝实现方式4：<br>jquery 有提供一个$.extend可以用来做 Deep Copy。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;, <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>深拷贝实现方式5：<br>另外一个很热门的函数库lodash，也有提供_.cloneDeep用来做 Deep Copy。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>,  <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125;  &#125;,  <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = _.cloneDeep(obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);</span><br></pre></td></tr></table></figure>
 
     
 
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Tsailor
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://yoursite.com/2020/06/26/JS深拷贝与浅拷贝/" title="JS深拷贝与浅拷贝" target="_blank">http://yoursite.com/2020/06/26/JS深拷贝与浅拷贝/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -587,16 +309,85 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS手动实现new
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -617,83 +408,14 @@
 
 
 
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/06/01/hello-world/" target="_blank">Hello World</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/06/01/hello-world/" class="archive-article-date">
-        <time datetime="2020-05-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>以前的blog不慎丢失了，从今开始，记录学习过程</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/06/01/hello-world/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
 
-  
-  
+
+
+
+
 
 
           </div>
@@ -721,8 +443,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
