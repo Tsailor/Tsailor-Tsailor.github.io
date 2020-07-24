@@ -18,7 +18,7 @@
 <meta property="og:description" content="1 webpack搭建react项目以前总是使用脚手架工具直接创建，今天试试webpack手动创建react 项目  1、 新建src 文件夹存放react代码  mkdir src2、 初始化项目   npm init -y3、 安装webpack  npm i webpack webpack-cli -devwebpack和babel在打包的时候不会包括到源码里，所以是 - div系统提示说：">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-23T04:50:56.177Z">
+<meta property="article:modified_time" content="2020-07-23T05:10:00.460Z">
 <meta property="article:author" content="Tsailor">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
@@ -188,7 +188,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">529字</span>
+      <span class="post-count">471字</span>
     </span>
   </span>
 
@@ -209,23 +209,22 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h3 id="1-webpack搭建react项目"><a href="#1-webpack搭建react项目" class="headerlink" title="1 webpack搭建react项目"></a>1 webpack搭建react项目</h3><p>以前总是使用脚手架工具直接创建，今天试试webpack手动创建react 项目 </p>
-<p>1、 新建src 文件夹存放react代码  <code>mkdir src</code><br>2、 初始化项目   <code>npm init -y</code><br>3、 安装webpack  <code>npm i webpack webpack-cli -dev</code><br>webpack和babel在打包的时候不会包括到源码里，所以是 - div<br>系统提示说：”-dev”已经不推荐使用了，使用 “–only=dev”代替<br>webpack-cli 包含了许多webpack的指令。<br>4、 安装babel<br><code>npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --only=dev</code><br>@babel/core 这是babel的核心库<br>@babel/preset-env  将es6编译成es5<br>@babel/preset-react  识别JSX语法<br>babel-loader     将经过babel处理后的文件输出成浏览器可以识别的格式  </p>
+<p>1、 新建src 文件夹存放react代码  <code>mkdir src</code><br>2、 初始化项目   <code>npm init -y</code><br>3、 安装webpack  <code>npm i webpack webpack-cli -dev</code><br>webpack和babel在打包的时候不会包括到源码里，所以是 - div<br>系统提示说：”-dev”已经不推荐使用了，使用 “–only=dev”代替<br>webpack-cli 包含了许多webpack的指令。  </p>
 <a id="more"></a>
-<p>5、 配置babel，根目录下新建.babelrc文件<br>写入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;@babel&#x2F;preset-env&quot;, &quot;@babel&#x2F;preset-react&quot;]</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">6、 配置webpack, 新建 &#96;webpack.config.js &#96; </span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">const path &#x3D; require(&#39;path&#39;);  &#x2F;&#x2F;引入路径</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;      &#x2F;&#x2F;  导出</span><br><span class="line">    entry: &#39;.&#x2F;src&#x2F;main.js&#39;,    &#x2F;&#x2F;    项目入口</span><br><span class="line">    output: &#123;                  &#x2F;&#x2F;    输出 </span><br><span class="line">      filename: &#39;bundle.js&#39;,    &#x2F;&#x2F;    打包后的名字</span><br><span class="line">      path: path.resolve(__dirname, &#39;dist&#39;)   &#x2F;&#x2F;  当前路径下</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          test: &#x2F;\.js$&#x2F;,         &#x2F;&#x2F;  打包 .js文件</span><br><span class="line">          exclude: &#x2F;node_modules&#x2F;,</span><br><span class="line">          use: &#123;</span><br><span class="line">            loader: &quot;babel-loader&quot;    &#x2F;&#x2F;  使用 babel-loader</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;  </span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">7、解析HTML文件，webpack的默认配置只能解析.js文件。安装 html-webpack-plugin</span><br><span class="line">&#96;javascript</span><br><span class="line">npm i html-webpack-plugin --only&#x3D;dev</span><br><span class="line">&#96;</span><br><span class="line">再配置插件 </span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">const HtmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;)  &#x2F;&#x2F; 引入</span><br><span class="line">plugins: [</span><br><span class="line">    new HtmlWebpackPlugin(&#123;</span><br><span class="line">        title: &#39;load-files&#39;,</span><br><span class="line">        template: &#39;index.html&#39;   &#x2F;&#x2F;  模板</span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>8、安装react、react-dom<br><code>npm install react react-dom --save</code> </p>
+
+<p>4、 安装babel<br><code>npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --only=dev</code><br>@babel/core 这是babel的核心库<br>@babel/preset-env  将es6编译成es5<br>@babel/preset-react  识别JSX语法<br>babel-loader     将经过babel处理后的文件输出成浏览器可以识别的格式  </p>
+<p>5、 配置babel，根目录下新建.babelrc文件<br>写入<br><code>{
+  &quot;presets&quot;: [&quot;@babel/preset-env&quot;, &quot;@babel/preset-react&quot;]
+}</code><br>6、 配置webpack, 新建 <code>webpack.config.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);  <span class="comment">//引入路径</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;      <span class="comment">//  导出</span></span><br><span class="line">    entry: <span class="string">'./src/main.js'</span>,    <span class="comment">//    项目入口</span></span><br><span class="line">    output: &#123;                  <span class="comment">//    输出 </span></span><br><span class="line">      filename: <span class="string">'bundle.js'</span>,    <span class="comment">//    打包后的名字</span></span><br><span class="line">      path: path.resolve(__dirname, <span class="string">'dist'</span>)   <span class="comment">//  当前路径下</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          test: <span class="regexp">/\.js$/</span>,         <span class="comment">//  打包 .js文件</span></span><br><span class="line">          exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">          use: &#123;</span><br><span class="line">            loader: <span class="string">"babel-loader"</span>    <span class="comment">//  使用 babel-loader</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>7、解析HTML文件，webpack的默认配置只能解析.js文件。安装 html-webpack-plugin<br><code>javascript
+npm i html-webpack-plugin --only=dev</code><br>再配置插件 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)  <span class="comment">// 引入</span></span><br><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">        title: <span class="string">'load-files'</span>,</span><br><span class="line">        template: <span class="string">'index.html'</span>   <span class="comment">//  模板</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>8、安装react、react-dom<br><code>npm install react react-dom --save</code></p>
 <p>9、 安装，启动webpack-dev-server<br><code>npm install webpack-dev-server --save-dev</code><br>package.json中，scripts标签里加入  </p>
-<pre><code class="javascript"><span class="string">"start:dev"</span>: <span class="string">"webpack-dev-server"</span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"start:dev"</span>: <span class="string">"webpack-dev-server"</span></span><br></pre></td></tr></table></figure>
 <p>10、执行<code>npm run start:dev</code><br>11、打包命令，npx webpack<br>12、 配置解析css的loader  ,<code>npm install --save-dev css-loader style-loader</code>顺序先下后上</p>
-<pre><code class="javascript">[
-           { <span class="attr">loader</span>: <span class="string">'style-loader'</span> },   <span class="comment">//  将style插入到模板里</span>
-           {
-             loader: <span class="string">'css-loader'</span>,    <span class="comment">//   解析css</span>
-             options: {
-               modules: <span class="literal">true</span>
-             }
-           }
-         ]</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> [</span><br><span class="line">    &#123; <span class="attr">loader</span>: <span class="string">'style-loader'</span> &#125;,   <span class="comment">//  将style插入到模板里</span></span><br><span class="line">    &#123;</span><br><span class="line">      loader: <span class="string">'css-loader'</span>,    <span class="comment">//   解析css</span></span><br><span class="line">      options: &#123;s</span><br><span class="line">        modules: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>13、抽离css样式到独立的文件<code>javascript npm install --save-dev mini-css-extract-plugin</code><br>  配置参照npm文档  </p>
 
     
@@ -361,11 +360,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Git分支管理
+          DOM操作-获取标签数目
         
       </div>
     </a>

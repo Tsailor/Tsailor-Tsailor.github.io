@@ -252,6 +252,97 @@
 
 
   
+    <article id="post-DOM操作-获取标签的数目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/">DOM操作-获取标签数目</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/" class="archive-article-date">
+        <time datetime="2020-07-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>完成一个 getTags 函数，可以检测当前页面用到了哪些标签，函数返回包含标签的字符串的数组，比如页面如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>知识回顾：<br>nodeType === 1   表示元素节点<br>nodeType === 2   表示属性节点</p>
+<p>document.documentElement   表示根节点</p>
+    
+    <a class="article-more-a" href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-webpack创建React开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -282,7 +373,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h3 id="1-webpack搭建react项目"><a href="#1-webpack搭建react项目" class="headerlink" title="1 webpack搭建react项目"></a>1 webpack搭建react项目</h3><p>以前总是使用脚手架工具直接创建，今天试试webpack手动创建react 项目 </p>
-<p>1、 新建src 文件夹存放react代码  <code>mkdir src</code><br>2、 初始化项目   <code>npm init -y</code><br>3、 安装webpack  <code>npm i webpack webpack-cli -dev</code><br>webpack和babel在打包的时候不会包括到源码里，所以是 - div<br>系统提示说：”-dev”已经不推荐使用了，使用 “–only=dev”代替<br>webpack-cli 包含了许多webpack的指令。<br>4、 安装babel<br><code>npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --only=dev</code><br>@babel/core 这是babel的核心库<br>@babel/preset-env  将es6编译成es5<br>@babel/preset-react  识别JSX语法<br>babel-loader     将经过babel处理后的文件输出成浏览器可以识别的格式  </p>
+<p>1、 新建src 文件夹存放react代码  <code>mkdir src</code><br>2、 初始化项目   <code>npm init -y</code><br>3、 安装webpack  <code>npm i webpack webpack-cli -dev</code><br>webpack和babel在打包的时候不会包括到源码里，所以是 - div<br>系统提示说：”-dev”已经不推荐使用了，使用 “–only=dev”代替<br>webpack-cli 包含了许多webpack的指令。  </p>
     
     <a class="article-more-a" href="/2020/07/22/webpack%E5%88%9B%E5%BB%BAReact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#more">more >></a>
     
