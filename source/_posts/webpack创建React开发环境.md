@@ -1,6 +1,7 @@
 ---
   tags: Webpack
   title: webpack搭建React开发环境
+  date: 2020-07-25
 ---
 ### 1 webpack搭建react项目 ###  
 以前总是使用脚手架工具直接创建，今天试试webpack手动创建react 项目 
