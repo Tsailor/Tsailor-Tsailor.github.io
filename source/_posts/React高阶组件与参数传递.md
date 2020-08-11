@@ -4,13 +4,18 @@
   date: 2020-08-11
 ---
 
+
 ### React高阶组件与参数传递 ###  
+
 
 高阶组件是React中的重要概念，主要用来实现组件逻辑的抽象和复用。
 高阶组件（简称HOC） 接收React组件作为参数，返回一个新的组件，高阶组件本质上是一个函数。
 
 实例1，写一个高阶组价，用来打印自身的props：
+
 <!--more-->
+
+
 ```javascript
     import React , { Component } from 'react';
 
