@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JS深拷贝与浅拷贝 | Blog</title>
+  <title>React高阶组件与参数传递 | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="JS数据类型划分：基本数据类型：string,number,boolean,null,undefined引用数据类型：Object(包括 Array,String,Function,Math,Date等) JS内存分为堆（heap）和栈（stack）栈：由系统自动分配，自动回收，效率高，但容量小。堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。">
+  <meta name="description" content="React高阶组件与参数传递高阶组件是React中的重要概念，主要用来实现组件逻辑的抽象和复用。高阶组件（简称HOC） 接收React组件作为参数，返回一个新的组件，高阶组件本质上是一个函数。 实例1，写一个高阶组价，用来打印自身的props：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS深拷贝与浅拷贝">
-<meta property="og:url" content="http://yoursite.com/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:title" content="React高阶组件与参数传递">
+<meta property="og:url" content="http://yoursite.com/2020/08/11/React%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%E4%B8%8E%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="JS数据类型划分：基本数据类型：string,number,boolean,null,undefined引用数据类型：Object(包括 Array,String,Function,Math,Date等) JS内存分为堆（heap）和栈（stack）栈：由系统自动分配，自动回收，效率高，但容量小。堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。">
+<meta property="og:description" content="React高阶组件与参数传递高阶组件是React中的重要概念，主要用来实现组件逻辑的抽象和复用。高阶组件（简称HOC） 接收React组件作为参数，返回一个新的组件，高阶组件本质上是一个函数。 实例1，写一个高阶组价，用来打印自身的props：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-23T02:12:21.288Z">
+<meta property="article:published_time" content="2020-08-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-18T03:02:53.945Z">
 <meta property="article:author" content="Tsailor">
-<meta property="article:tag" content="JS基础">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
@@ -160,22 +160,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS深拷贝与浅拷贝" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-React高阶组件与参数传递" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      JS深拷贝与浅拷贝
+      React高阶组件与参数传递
     </h1>
   
 
 
   
   
-<a href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-        <time datetime="2020-06-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
+<a href="/2020/08/11/React%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%E4%B8%8E%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" class="archive-article-date">
+        <time datetime="2020-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
 </a>
 
   
@@ -188,7 +188,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1k字</span>
+      <span class="post-count">377字</span>
     </span>
   </span>
 
@@ -197,7 +197,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">1分</span>
     </span>
   </span>
 </div>
@@ -208,35 +208,13 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>JS数据类型划分：<br>基本数据类型：string,number,boolean,null,undefined<br>引用数据类型：Object(包括 Array,String,Function,Math,Date等)</p>
-<p>JS内存分为堆（heap）和栈（stack）<br>栈：由系统自动分配，自动回收，效率高，但容量小。<br>堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。</p>
-<p>JS的基本类型分配在栈中。</p>
+    <h3 id="React高阶组件与参数传递"><a href="#React高阶组件与参数传递" class="headerlink" title="React高阶组件与参数传递"></a>React高阶组件与参数传递</h3><p>高阶组件是React中的重要概念，主要用来实现组件逻辑的抽象和复用。<br>高阶组件（简称HOC） 接收React组件作为参数，返回一个新的组件，高阶组件本质上是一个函数。</p>
+<p>实例1，写一个高阶组价，用来打印自身的props：</p>
 <a id="more"></a>
-<p>而因为<strong>引用类型大小的不固定，系统将存储该引用类型的地址存在栈中，并赋值给变量本身，而具体的内容存在堆中。</strong><br>所以当访问一个对象的时候，先访问栈中它的地址，然后按照这个地址去堆中找到它的实际内容。</p>
-<p>当复制的时候，对于基本类型的变量，系统会为新的变量在栈中开辟一个新的空间，赋予相同的值，然后这两个变量就各自独立，毫无牵连。<br>而对于引用类型的变量，新的变量复制的是那个<strong>对象在堆中的地址</strong>，这两个变量指向的是同一个对象。</p>
-<p>JS的基本类型不存在浅拷贝还是深拷贝的问题，主要是针对于对象，比如一般的对象，和特殊的数组对象。</p>
-<p><strong>浅拷贝是指复制对象的时候，指对第一层键值对进行独立的复制。</strong></p>
-<p>浅拷贝实现方式1：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shaCopy</span>(<span class="params">source</span>)</span>&#123;   <span class="comment">//浅拷贝    </span></span><br><span class="line">    <span class="keyword">var</span> target=&#123;&#125;;    </span><br><span class="line">    <span class="keyword">if</span>(!source||<span class="keyword">typeof</span> source!== <span class="string">"Object"</span>)       </span><br><span class="line">       <span class="keyword">return</span>;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> source)&#123;      </span><br><span class="line">       target[key]=source[key];    </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a=&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">age</span>:<span class="number">18</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> res=shaCopy(a);<span class="built_in">console</span>.log(res);  </span><br><span class="line">    <span class="comment">//  &#123;name: "jack", age: 18&#125;</span></span><br><span class="line">res.age=<span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// &#123;name: "jack", age: 18&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//  &#123;name: "jack", age: 20&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">import</span> React , &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Com</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> data = &#123;</span><br><span class="line">        name : <span class="string">"jack"</span>,</span><br><span class="line">        age : <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;WithLogProps value=&#123;data&#125;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> MyComponent = <span class="function">(<span class="params">props</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            我的名字：&#123;props.value.name&#125;</span><br><span class="line">            我的年龄：&#123;props.value.age&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const WithProps = (MyComponent)=&gt;&#123;</span></span><br><span class="line"><span class="regexp">    return class extends Component &#123;</span></span><br><span class="line"><span class="regexp">        componentDidMount()&#123;</span></span><br><span class="line"><span class="regexp">            console.log(this.props)  /</span><span class="regexp">/ 为组件添加事件，打印props</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        render()&#123;</span></span><br><span class="line"><span class="regexp">            return(</span></span><br><span class="line"><span class="regexp">               &lt; MyComponent &#123;...this.props&#125;/</span>&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// WithProps是一个高阶组件, 但本质是个函数， WithLogProps 对应的就是 return 的那个组件。通过this.props拿到组件的value属性</span></span><br><span class="line"><span class="keyword">const</span> WithLogProps = WithProps(MyComponent) </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Com;</span><br></pre></td></tr></table></figure>
 
-<p>浅拷贝实现方式2：</p>
-<p>Object.assign是ES6的新函数。<br>Object.assign()<br>方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。<br>但是 Object.assign()<br>进行的是浅拷贝，拷贝的是对象的属性的引用，而不是对象本身。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(target, ...sources)</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<p>target：目标对象。<br>sources：任意多个源对象。<br>返回值：目标对象会被返回。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">friend</span>:&#123; <span class="attr">name</span>:<span class="string">"tom"</span>,<span class="attr">age</span>:<span class="number">18</span> &#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> res1=<span class="built_in">Object</span>.assign(&#123;&#125;,obj1);<span class="built_in">console</span>.log(res1)  |</span><br><span class="line">   <span class="comment">// &#123; name:"jack", friend:&#123; name:"tom",age:18 &#125;&#125;  </span></span><br><span class="line">    <span class="comment">//但是修改res1中friend对应的属性，obj1中friend对应的属性也会改变res1.friend. |</span></span><br><span class="line">name=<span class="string">"lili"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);   <span class="comment">// &#123; name:"jack", friend:&#123; name:"lili",age:18 &#125;&#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong>那如何完全独立地拷贝出一份呢？这也就是所谓的深拷贝。</strong></p>
-<p>深拷贝实现方式1：</p>
-<p>Object.assign();<br>当对象只有一层时，Object.assign()也能实现深拷贝。</p>
-<p>深拷贝实现方式2：<br>用JSON.stringify把对象转成字符串，再用JSON.parse把字符串转成新的对象。</p>
-<p>但是只有对象内属性值不为undefined和Function时可用。</p>
-<p>深拷贝实现方式3：<br>递归实现</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (!source ||<span class="keyword">typeof</span> source !== <span class="string">"object"</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        <span class="keyword">var</span> value = source[key]; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span></span><br><span class="line">            value === <span class="string">'object'</span>) &#123;  <span class="comment">//属性值是数组或对象     </span></span><br><span class="line">            target[key] = deepClone(value)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            target[key]= value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;; </span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; </span><br><span class="line">    name: <span class="string">"jake"</span>,</span><br><span class="line">    friend: &#123; </span><br><span class="line">        name: <span class="string">"Tom"</span>,</span><br><span class="line">        address: &#123;</span><br><span class="line">            city: <span class="string">"Beijing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> res1=deepClone(obj1);  </span><br><span class="line">res1.friend.address.city = <span class="string">"ShangHai"</span>;</span><br><span class="line">    <span class="comment">//属性值为对象</span></span><br><span class="line"><span class="built_in">console</span>.log(res1);      <span class="comment">//  &#123; name: "jake", friend: &#123;name: "Tom", address: &#123; city: "ShangHai" &#125;&#125;&#125;; </span></span><br><span class="line"><span class="built_in">console</span>.log(obj1);      <span class="comment">// &#123; name:"jake",friend: &#123; name: "Tom", address: &#123; city: "Beijing"&#125;&#125;&#125;;</span></span><br><span class="line"><span class="comment">//属性值为数组</span></span><br><span class="line"><span class="keyword">var</span> obj2=&#123; <span class="attr">name</span>:<span class="string">"jake"</span>,<span class="attr">friend</span>:[ <span class="number">13</span>,<span class="number">24</span>,[<span class="number">19</span>,<span class="number">20</span>,<span class="number">18</span>] ]&#125;; </span><br><span class="line"><span class="keyword">var</span>  res2 = deepClone(obj2); </span><br><span class="line">res2.friend[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span>; </span><br><span class="line"><span class="built_in">console</span>.log(res2);    <span class="comment">// &#123; name: "jake", friend: [13, 24, [19, 0, 18]]&#125;; </span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);    <span class="comment">// &#123; name:"jake",friend:[ 13,24,[19,20,18] ]&#125;;</span></span><br></pre></td></tr></table></figure>
-<p>深拷贝实现方式4：<br>jquery 有提供一个$.extend可以用来做 Deep Copy。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;, <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>深拷贝实现方式5：<br>另外一个很热门的函数库lodash，也有提供_.cloneDeep用来做 Deep Copy。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>,  <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125;  &#125;,  <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = _.cloneDeep(obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);</span><br></pre></td></tr></table></figure>
+<p>有时候也需要接受其他的参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React , &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Com</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> data = &#123;</span><br><span class="line">        name : <span class="string">"jack"</span>,</span><br><span class="line">        age : <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;WithLogProps value=&#123;data&#125;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> data = <span class="string">"Tsailor"</span></span><br><span class="line"><span class="keyword">const</span> MyComponent = <span class="function">(<span class="params">props</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(props)</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            我的名字：&#123;props.value.name&#125;</span><br><span class="line">            我的年龄：&#123;props.value.age&#125;</span><br><span class="line">            我的data :&#123;props.data&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const WithProps = (data)=&gt; (MyComponent)=&gt;&#123;  /</span><span class="regexp">/  箭头函数自动return</span></span><br><span class="line"><span class="regexp">    return class extends Component &#123;</span></span><br><span class="line"><span class="regexp">        componentDidMount()&#123;</span></span><br><span class="line"><span class="regexp">            console.log(data)   /</span><span class="regexp">/ 拿到这个data</span></span><br><span class="line"><span class="regexp">            console.log(this.props)</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        render()&#123;</span></span><br><span class="line"><span class="regexp">            return(</span></span><br><span class="line"><span class="regexp">               &lt; MyComponent &#123;...this.props&#125; data=&#123;data&#125;/</span>&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> WithLogProps = WithProps(data)(MyComponent)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Com;</span><br></pre></td></tr></table></figure>
 
     
 
@@ -278,7 +256,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/06/26/JS深拷贝与浅拷贝/" title="JS深拷贝与浅拷贝" target="_blank">http://yoursite.com/2020/06/26/JS深拷贝与浅拷贝/</a>
+          <a href="http://yoursite.com/2020/08/11/React高阶组件与参数传递/" title="React高阶组件与参数传递" target="_blank">http://yoursite.com/2020/08/11/React高阶组件与参数传递/</a>
         </li>
         
         <li>
@@ -300,7 +278,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -356,7 +334,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/11/React%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%E4%B8%8E%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -371,18 +349,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS手动实现new
+          React Redux中关于state的设计的一点思考,
         
       </div>
     </a>
   
   
-    <a href="/2020/06/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DOM操作-获取标签数目</div>
       <i class="icon-circle-right"></i>
     </a>
   

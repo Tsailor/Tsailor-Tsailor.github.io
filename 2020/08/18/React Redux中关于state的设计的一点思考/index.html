@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JS深拷贝与浅拷贝 | Blog</title>
+  <title>React Redux中关于state的设计的一点思考, | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="JS数据类型划分：基本数据类型：string,number,boolean,null,undefined引用数据类型：Object(包括 Array,String,Function,Math,Date等) JS内存分为堆（heap）和栈（stack）栈：由系统自动分配，自动回收，效率高，但容量小。堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。">
+  <meta name="description" content="React Redux中关于state的设计的一点思考Redux应用执行过程中任何一个时刻本质上都是该时刻的应用state的反映，state驱动了Redux的逻辑运转。现在以一个购物车的小案例做分析。https:&#x2F;&#x2F;github.com&#x2F;Tsailor&#x2F;web-Practice&#x2F;tree&#x2F;master&#x2F;Redux%E5%AE%9E%E7%8E%B0Shoppping-Cart&#x2F;shoppingca">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS深拷贝与浅拷贝">
-<meta property="og:url" content="http://yoursite.com/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:title" content="React Redux中关于state的设计的一点思考,">
+<meta property="og:url" content="http://yoursite.com/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="JS数据类型划分：基本数据类型：string,number,boolean,null,undefined引用数据类型：Object(包括 Array,String,Function,Math,Date等) JS内存分为堆（heap）和栈（stack）栈：由系统自动分配，自动回收，效率高，但容量小。堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。">
+<meta property="og:description" content="React Redux中关于state的设计的一点思考Redux应用执行过程中任何一个时刻本质上都是该时刻的应用state的反映，state驱动了Redux的逻辑运转。现在以一个购物车的小案例做分析。https:&#x2F;&#x2F;github.com&#x2F;Tsailor&#x2F;web-Practice&#x2F;tree&#x2F;master&#x2F;Redux%E5%AE%9E%E7%8E%B0Shoppping-Cart&#x2F;shoppingca">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-23T02:12:21.288Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/shopping-Cart.PNG">
+<meta property="article:published_time" content="2020-08-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-18T03:26:51.080Z">
 <meta property="article:author" content="Tsailor">
-<meta property="article:tag" content="JS基础">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/shopping-Cart.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
   
@@ -160,22 +162,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS深拷贝与浅拷贝" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-React Redux中关于state的设计的一点思考" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      JS深拷贝与浅拷贝
+      React Redux中关于state的设计的一点思考,
     </h1>
   
 
 
   
   
-<a href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-        <time datetime="2020-06-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
+<a href="/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/" class="archive-article-date">
+        <time datetime="2020-08-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
 </a>
 
   
@@ -188,7 +190,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1k字</span>
+      <span class="post-count">894字</span>
     </span>
   </span>
 
@@ -197,7 +199,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -208,35 +210,19 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>JS数据类型划分：<br>基本数据类型：string,number,boolean,null,undefined<br>引用数据类型：Object(包括 Array,String,Function,Math,Date等)</p>
-<p>JS内存分为堆（heap）和栈（stack）<br>栈：由系统自动分配，自动回收，效率高，但容量小。<br>堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。</p>
-<p>JS的基本类型分配在栈中。</p>
+    <h2 id="React-Redux中关于state的设计的一点思考"><a href="#React-Redux中关于state的设计的一点思考" class="headerlink" title="React Redux中关于state的设计的一点思考"></a>React Redux中关于state的设计的一点思考</h2><p>Redux应用执行过程中任何一个时刻本质上都是该时刻的应用state的反映，state驱动了Redux的逻辑运转。<br>现在以一个购物车的小案例做分析。<br><a href="https://github.com/Tsailor/web-Practice/tree/master/Redux%E5%AE%9E%E7%8E%B0Shoppping-Cart/shoppingcart" target="_blank" rel="noopener">https://github.com/Tsailor/web-Practice/tree/master/Redux%E5%AE%9E%E7%8E%B0Shoppping-Cart/shoppingcart</a><br>内容截图如下<br><img src="/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/shopping-Cart.PNG" alt="shopping-Cart.png"></p>
 <a id="more"></a>
-<p>而因为<strong>引用类型大小的不固定，系统将存储该引用类型的地址存在栈中，并赋值给变量本身，而具体的内容存在堆中。</strong><br>所以当访问一个对象的时候，先访问栈中它的地址，然后按照这个地址去堆中找到它的实际内容。</p>
-<p>当复制的时候，对于基本类型的变量，系统会为新的变量在栈中开辟一个新的空间，赋予相同的值，然后这两个变量就各自独立，毫无牵连。<br>而对于引用类型的变量，新的变量复制的是那个<strong>对象在堆中的地址</strong>，这两个变量指向的是同一个对象。</p>
-<p>JS的基本类型不存在浅拷贝还是深拷贝的问题，主要是针对于对象，比如一般的对象，和特殊的数组对象。</p>
-<p><strong>浅拷贝是指复制对象的时候，指对第一层键值对进行独立的复制。</strong></p>
-<p>浅拷贝实现方式1：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shaCopy</span>(<span class="params">source</span>)</span>&#123;   <span class="comment">//浅拷贝    </span></span><br><span class="line">    <span class="keyword">var</span> target=&#123;&#125;;    </span><br><span class="line">    <span class="keyword">if</span>(!source||<span class="keyword">typeof</span> source!== <span class="string">"Object"</span>)       </span><br><span class="line">       <span class="keyword">return</span>;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> source)&#123;      </span><br><span class="line">       target[key]=source[key];    </span><br><span class="line">    &#125;     </span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a=&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">age</span>:<span class="number">18</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> res=shaCopy(a);<span class="built_in">console</span>.log(res);  </span><br><span class="line">    <span class="comment">//  &#123;name: "jack", age: 18&#125;</span></span><br><span class="line">res.age=<span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// &#123;name: "jack", age: 18&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//  &#123;name: "jack", age: 20&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>浅拷贝实现方式2：</p>
-<p>Object.assign是ES6的新函数。<br>Object.assign()<br>方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。<br>但是 Object.assign()<br>进行的是浅拷贝，拷贝的是对象的属性的引用，而不是对象本身。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(target, ...sources)</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<p>target：目标对象。<br>sources：任意多个源对象。<br>返回值：目标对象会被返回。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">friend</span>:&#123; <span class="attr">name</span>:<span class="string">"tom"</span>,<span class="attr">age</span>:<span class="number">18</span> &#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> res1=<span class="built_in">Object</span>.assign(&#123;&#125;,obj1);<span class="built_in">console</span>.log(res1)  |</span><br><span class="line">   <span class="comment">// &#123; name:"jack", friend:&#123; name:"tom",age:18 &#125;&#125;  </span></span><br><span class="line">    <span class="comment">//但是修改res1中friend对应的属性，obj1中friend对应的属性也会改变res1.friend. |</span></span><br><span class="line">name=<span class="string">"lili"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);   <span class="comment">// &#123; name:"jack", friend:&#123; name:"lili",age:18 &#125;&#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong>那如何完全独立地拷贝出一份呢？这也就是所谓的深拷贝。</strong></p>
-<p>深拷贝实现方式1：</p>
-<p>Object.assign();<br>当对象只有一层时，Object.assign()也能实现深拷贝。</p>
-<p>深拷贝实现方式2：<br>用JSON.stringify把对象转成字符串，再用JSON.parse把字符串转成新的对象。</p>
-<p>但是只有对象内属性值不为undefined和Function时可用。</p>
-<p>深拷贝实现方式3：<br>递归实现</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (!source ||<span class="keyword">typeof</span> source !== <span class="string">"object"</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        <span class="keyword">var</span> value = source[key]; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span></span><br><span class="line">            value === <span class="string">'object'</span>) &#123;  <span class="comment">//属性值是数组或对象     </span></span><br><span class="line">            target[key] = deepClone(value)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            target[key]= value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;; </span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; </span><br><span class="line">    name: <span class="string">"jake"</span>,</span><br><span class="line">    friend: &#123; </span><br><span class="line">        name: <span class="string">"Tom"</span>,</span><br><span class="line">        address: &#123;</span><br><span class="line">            city: <span class="string">"Beijing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> res1=deepClone(obj1);  </span><br><span class="line">res1.friend.address.city = <span class="string">"ShangHai"</span>;</span><br><span class="line">    <span class="comment">//属性值为对象</span></span><br><span class="line"><span class="built_in">console</span>.log(res1);      <span class="comment">//  &#123; name: "jake", friend: &#123;name: "Tom", address: &#123; city: "ShangHai" &#125;&#125;&#125;; </span></span><br><span class="line"><span class="built_in">console</span>.log(obj1);      <span class="comment">// &#123; name:"jake",friend: &#123; name: "Tom", address: &#123; city: "Beijing"&#125;&#125;&#125;;</span></span><br><span class="line"><span class="comment">//属性值为数组</span></span><br><span class="line"><span class="keyword">var</span> obj2=&#123; <span class="attr">name</span>:<span class="string">"jake"</span>,<span class="attr">friend</span>:[ <span class="number">13</span>,<span class="number">24</span>,[<span class="number">19</span>,<span class="number">20</span>,<span class="number">18</span>] ]&#125;; </span><br><span class="line"><span class="keyword">var</span>  res2 = deepClone(obj2); </span><br><span class="line">res2.friend[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span>; </span><br><span class="line"><span class="built_in">console</span>.log(res2);    <span class="comment">// &#123; name: "jake", friend: [13, 24, [19, 0, 18]]&#125;; </span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);    <span class="comment">// &#123; name:"jake",friend:[ 13,24,[19,20,18] ]&#125;;</span></span><br></pre></td></tr></table></figure>
-<p>深拷贝实现方式4：<br>jquery 有提供一个$.extend可以用来做 Deep Copy。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;, <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>深拷贝实现方式5：<br>另外一个很热门的函数库lodash，也有提供_.cloneDeep用来做 Deep Copy。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">1</span>,  <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125;  &#125;,  <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = _.cloneDeep(obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);</span><br></pre></td></tr></table></figure>
+<p>整体分为两个部分：商品栏、购物车栏；<br>商品栏：标题、价格、库存量( title, price, inventory );<br>购物车栏：标题、价格、数量、小计金额( title , price, quality , unitPrice);<br><strong>先看一个错误的state设计用例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;    <span class="comment">// 全局state</span></span><br><span class="line">    products:[    <span class="comment">// 商品栏state， 数组表示</span></span><br><span class="line">        &#123;<span class="string">"id"</span>: <span class="number">1</span>, <span class="string">"title"</span>: <span class="string">"iPad 4 Mini"</span>, <span class="string">"price"</span>: <span class="number">500.01</span>, <span class="string">"inventory"</span>: <span class="number">2</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"id"</span>: <span class="number">2</span>, <span class="string">"title"</span>: <span class="string">"H&amp;M T-Shirt White"</span>, <span class="string">"price"</span>: <span class="number">10.99</span>, <span class="string">"inventory"</span>: <span class="number">10</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"id"</span>: <span class="number">3</span>, <span class="string">"title"</span>: <span class="string">"Charli XCX - Sucker CD"</span>, <span class="string">"price"</span>: <span class="number">19.99</span>, <span class="string">"inventory"</span>: <span class="number">5</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">    carts:&#123;</span><br><span class="line">        cartProducts:[</span><br><span class="line">            &#123;<span class="string">"id"</span>: <span class="number">1</span>, <span class="string">"title"</span>: <span class="string">"iPad 4 Mini"</span>, <span class="string">"price"</span>: <span class="number">500.01</span>, <span class="string">"quanlity"</span>: <span class="number">1</span>, <span class="string">"unitPrice"</span> : <span class="number">500.01</span>&#125;,</span><br><span class="line">            &#123;<span class="string">"id"</span>: <span class="number">2</span>, <span class="string">"title"</span>: <span class="string">"H&amp;M T-Shirt White"</span>, <span class="string">"price"</span>: <span class="number">10.99</span>, <span class="string">"quanlity"</span>: <span class="number">1</span>, <span class="string">"unitPrice"</span> : <span class="number">10.99</span>&#125;,</span><br><span class="line">        ],</span><br><span class="line">        total:<span class="number">511.00</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样设计的存在问题：<br>1、大量数据重复存储，如id,title,price等<br>2、触发事件Add To Cart时，需要修改的不止一个地方并且需要遍历products和cartProducts中的所有数据根据id进行比较。</p>
+<p>存储浪费且性能消耗。</p>
+<p>####该如何合理设计state呢 ####</p>
+<p>记住一句话：<strong>像设计数据库一样设计state</strong>。把state看做一个数据库，state中每一部分状态看做数据库里的一张表，状态中的每一个字段对应表中的一个字段。设计数据库遵循的三个原则：<br>（1）数据按照不同的领域(domain)分类存放在不同的表中，不同表中存储的数据不能重复<br>（2）表中每一列的数据都依赖这张表的主键<br>（3）表中除了主键，其他列互相不能有直接依赖关系<br>于是，根据这三个原则，翻译出设计state时的原则：</p>
+<p><strong>(1) 整个应用状态按照领域划分若干个子状态，子状态不能保存重复的数据</strong><br><strong>(2) state以键值对的形式保存数据，以记录的key或id作为索引，记录中其他字段都依赖于这个索引</strong><br><strong>(3) state中不能保存可以通过其他字段计算得出的数据，即state中的数据不能相互依赖</strong></p>
+<p><strong>重新设计state</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    products:&#123;  <span class="comment">// 分析：按照领域划分子状态， 子状态products </span></span><br><span class="line">        byId: &#123;  <span class="comment">// 键值对的形式保存数据 id/key 作为索引</span></span><br><span class="line">            <span class="number">1</span>: &#123;<span class="string">"id"</span>: <span class="number">1</span>, <span class="string">"title"</span>: <span class="string">"iPad 4 Mini"</span>, <span class="string">"price"</span>: <span class="number">500.01</span>, <span class="string">"inventory"</span>: <span class="number">2</span>&#125;,</span><br><span class="line">            <span class="number">2</span>: &#123;<span class="string">"id"</span>: <span class="number">2</span>, <span class="string">"title"</span>: <span class="string">"H&amp;M T-Shirt White"</span>, <span class="string">"price"</span>: <span class="number">10.99</span>, <span class="string">"inventory"</span>: <span class="number">10</span>&#125;,</span><br><span class="line">            <span class="number">3</span>: &#123;<span class="string">"id"</span>: <span class="number">3</span>, <span class="string">"title"</span>: <span class="string">"Charli XCX - Sucker CD"</span>, <span class="string">"price"</span>: <span class="number">19.99</span>, <span class="string">"inventory"</span>: <span class="number">5</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        containId:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]  <span class="comment">// state包含的key</span></span><br><span class="line">    &#125;</span><br><span class="line">    cart:&#123;     <span class="comment">// 子状态 carts</span></span><br><span class="line">        addedGoodId：[<span class="number">1</span>,<span class="number">2</span>] <span class="comment">// 保存添加到购物车的商品的 id   没有重复数据</span></span><br><span class="line">        quantityById: &#123;   <span class="comment">//  保存每个商品的数量， id作为key</span></span><br><span class="line">            <span class="number">1</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="number">2</span>: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析：<br>1、按照领域划分子状态，products 和 cart, 不同表中数据不能重复<br>2、state以键值对的形式保存数据，id/key作为索引<br>3、state中的数据不能相互依赖，小计金额可以通过price x quantity得出，不需要存放在state中，total同理。<br>4、商品栏数据通过 containId.map((id) =&gt; byId[ id] )取出。<br>5、触发事件Add To Cart时，products.byTd[ id ].inventory - 1, addedGoodId没有这个id则加入。quantityById 没有这个id则加入id作为属性，value = 1，有则value + 1</p>
+<p><em>The End</em><br><em>我还是一个初学者，有不足之处请见谅</em></p>
 
     
 
@@ -278,7 +264,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/06/26/JS深拷贝与浅拷贝/" title="JS深拷贝与浅拷贝" target="_blank">http://yoursite.com/2020/06/26/JS深拷贝与浅拷贝/</a>
+          <a href="http://yoursite.com/2020/08/18/React Redux中关于state的设计的一点思考/" title="React Redux中关于state的设计的一点思考," target="_blank">http://yoursite.com/2020/08/18/React Redux中关于state的设计的一点思考/</a>
         </li>
         
         <li>
@@ -300,7 +286,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -356,7 +342,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/18/React%20Redux%E4%B8%AD%E5%85%B3%E4%BA%8Estate%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -371,18 +357,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JS手动实现new
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/08/11/React%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%E4%B8%8E%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React高阶组件与参数传递</div>
       <i class="icon-circle-right"></i>
     </a>
   
