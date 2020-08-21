@@ -164,6 +164,102 @@
             
 
   
+    <article id="post-长列表优化：懒加载+分页" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/08/21/%E9%95%BF%E5%88%97%E8%A1%A8%E4%BC%98%E5%8C%96%EF%BC%9A%E6%87%92%E5%8A%A0%E8%BD%BD+%E5%88%86%E9%A1%B5/">React长列表优化：懒加载+分页</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/08/21/%E9%95%BF%E5%88%97%E8%A1%A8%E4%BC%98%E5%8C%96%EF%BC%9A%E6%87%92%E5%8A%A0%E8%BD%BD+%E5%88%86%E9%A1%B5/" class="archive-article-date">
+        <time datetime="2020-08-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-21</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="React长列表优化：懒加载-分页"><a href="#React长列表优化：懒加载-分页" class="headerlink" title="React长列表优化：懒加载+分页"></a>React长列表优化：懒加载+分页</h3><p>背景：React项目中渲染一个长列表，后端返回10000+条数据。如果全部渲染出来，耗时即长，长时间白屏。<br>使用懒加载+分页的方式，每次滚动到底部，加载下一页数据。</p>
+<p>步骤1：启动一个后台服务，返回10000条数据，这里用koa.js来做</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">"koa"</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>); <span class="comment">//路由模块</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();</span><br><span class="line">router.get(<span class="string">'/api/getMock'</span>,<span class="keyword">async</span> ctx =&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> list = [];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getRandomWords</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> words1 = <span class="string">"但使龙城飞将在，不教胡马度阴山0123456789"</span>;</span><br><span class="line">        <span class="keyword">let</span> ret = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">let</span> len = words1.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            ret += words1[<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * len)]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">        list.push(&#123;</span><br><span class="line">            title: getRandomWords(<span class="number">12</span>),</span><br><span class="line">            id: <span class="string">`id-<span class="subst">$&#123;i&#125;</span>`</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">        state: <span class="number">200</span>,</span><br><span class="line">        data: list</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">router.get(<span class="string">'/test'</span>,<span class="keyword">async</span> ctx=&gt;&#123;</span><br><span class="line">    ctx.body=<span class="string">"ok"</span></span><br><span class="line">&#125;)</span><br><span class="line">app.use(router.routes());</span><br><span class="line">app.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p>由于React项目是以服务的方式启动的，所以配置package.json，添加<code>&quot;proxy&quot;: &quot;http://localhost:8080&quot;</code> </p>
+<p>或者使用CORS跨域来做,二选一即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">'koa2-cors'</span>); <span class="comment">//跨域处理</span></span><br><span class="line">app.use(</span><br><span class="line">    cors(&#123;</span><br><span class="line">        origin: <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123; <span class="comment">//设置允许来自指定域名请求</span></span><br><span class="line">            <span class="keyword">if</span> (ctx.url === <span class="string">'/test'</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'*'</span>; <span class="comment">// 允许来自所有域名请求</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'http://localhost:3000'</span>; <span class="comment">//只允许http://localhost:3000这个域名的请求</span></span><br><span class="line">        &#125;,</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//  credentials: true, //是否允许发送Cookie</span></span><br><span class="line">        allowMethods: [<span class="string">'GET'</span>, <span class="string">'POST'</span>, <span class="string">'PUT'</span>, <span class="string">'DELETE'</span>, <span class="string">'OPTIONS'</span>], <span class="comment">//设置所允许的HTTP请求方法</span></span><br><span class="line">        allowHeaders: [<span class="string">'Content-Type'</span>, <span class="string">'Authorization'</span>, <span class="string">'Accept'</span>], <span class="comment">//设置服务器支持的所有头信息字段</span></span><br><span class="line">        exposeHeaders: [<span class="string">'WWW-Authenticate'</span>, <span class="string">'Server-Authorization'</span>] <span class="comment">//设置获取其他自定义字段'</span></span><br><span class="line">    &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>步骤2：App.js里使用useState() 将所有的数据放入state</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> usedata = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> fetch(<span class="string">'/api/getMock'</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()) </span><br><span class="line">      <span class="comment">//  return fetch('http://localhost:8080/api/getMock').then(res =&gt; res.json())   CORS跨域</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> [list, setList ] = useState([]);    <span class="comment">// 全部数据</span></span><br><span class="line">  <span class="keyword">let</span> [page, setPage ] = useState(<span class="number">1</span>);  <span class="comment">//  第一次展示 第一页的数据</span></span><br><span class="line">  <span class="keyword">let</span> getData  = usedata();</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;     <span class="comment">//  第一次挂载的时候，请求数据</span></span><br><span class="line">    getData.then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">      setList(res.data)</span><br><span class="line">    &#125;)</span><br><span class="line">   </span><br><span class="line">  &#125;,[])</span><br><span class="line">  <span class="keyword">const</span> getNextPage = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">     setPage(<span class="function">(<span class="params">preState</span>)=&gt;</span>preState+<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">         &lt;div className=<span class="string">"title"</span>&gt;长列表优化：懒加载+分页&lt;<span class="regexp">/div&gt; </span></span><br><span class="line"><span class="regexp">         &#123;list.length!== 0 ? &lt;List data = &#123;list.slice(0,page*20)&#125; handleNextPage=&#123;getNextPage&#125; curPage =&#123;page&#125;/</span>&gt; :<span class="literal">null</span>&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>步骤3：List组件，防抖优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> List = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; data, handleNextPage, curPage &#125; = props;</span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">document</span>.querySelector(<span class="string">".App"</span>).addEventListener(<span class="string">"scroll"</span>, debounce(fn, <span class="number">300</span>));</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span><span class="built_in">document</span>.querySelector(<span class="string">".App"</span>).removeEventListener(<span class="string">"scroll"</span>,debounce(fn, <span class="number">300</span>))</span><br><span class="line">    &#125;,[data])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>)</span>&#123;     <span class="comment">//  防抖 。 非立即执行版本</span></span><br><span class="line">      <span class="keyword">let</span> timer;</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>)</span>&#123;   </span><br><span class="line">          <span class="keyword">let</span> context = <span class="keyword">this</span>;</span><br><span class="line">          <span class="keyword">if</span>(timer)</span><br><span class="line">             clearTimeout(timer)</span><br><span class="line">          timer = setTimeout(</span><br><span class="line">            ()=&gt;fn.call(context,...args) , wait</span><br><span class="line">          )          </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">// const maxScrollTop = document.querySelector(".App").scrollHeight</span></span><br><span class="line">      <span class="comment">// const innerHeight= document.querySelector(".App").offsetHeight;</span></span><br><span class="line">      </span><br><span class="line">      <span class="keyword">const</span> currentScrollTop = <span class="built_in">document</span>.querySelector(<span class="string">".App"</span>).scrollTop;   <span class="comment">//  滚动元素上面超出的距离</span></span><br><span class="line">      <span class="keyword">const</span> maxScrollTop = <span class="built_in">document</span>.querySelector(<span class="string">".App"</span>).scrollHeight - <span class="built_in">document</span>.querySelector(<span class="string">".App"</span>).offsetHeight;     </span><br><span class="line">        <span class="comment">//  滚动页面长度 - 此容器高度 =  滚动元素上面超出的距离 + 底部未出现的高度</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (maxScrollTop - currentScrollTop &lt; <span class="number">20</span>) &#123;</span><br><span class="line">          handleNextPage()    <span class="comment">//  请求下一页</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"list-panel"</span>&gt;</span><br><span class="line">        &#123; data.map(<span class="function">(<span class="params">list</span>)=&gt;</span><span class="xml"><span class="tag">&lt;<span class="name">Li</span> <span class="attr">key</span>=<span class="string">&#123;list.id&#125;</span> <span class="attr">list</span>=<span class="string">&#123;list&#125;</span> /&gt;</span></span>) &#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )  </span></span><br><span class="line"><span class="regexp">&#125; </span></span><br><span class="line"><span class="regexp">const LiItem = (&#123;list&#125;)=&gt;&lt;li className="listitem" &gt;&#123;list.title&#125;&lt;/</span>li&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Li = React.memo( LiItem )   <span class="comment">//  React.memo包裹子组件，避免不必要的渲染</span></span><br></pre></td></tr></table></figure>
+<p>总结：此案例中用到了前端用到了 React hooks 、防抖、懒加载、React.memo(), 后台用到了koa.js CORS跨域。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/08/21/%E9%95%BF%E5%88%97%E8%A1%A8%E4%BC%98%E5%8C%96%EF%BC%9A%E6%87%92%E5%8A%A0%E8%BD%BD+%E5%88%86%E9%A1%B5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React Redux中关于state的设计的一点思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1058,15 +1154,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
