@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://tsailor.github.io">
   <title>Archives | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,7 +13,7 @@
   <meta name="description" content="沉默寡言是亮仔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta property="og:url" content="http://tsailor.github.io/archives/page/2/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="沉默寡言是亮仔">
 <meta property="og:locale" content="en_US">
@@ -73,6 +73,14 @@
 			
 				<li><a href="/" >主页</a></li>
 			
+				<li><a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" >前端基础篇</a></li>
+			
+				<li><a href="/tags/React/" >React篇</a></li>
+			
+				<li><a href="/tags/tools/" >工具篇</a></li>
+			
+				<li><a href="/tags/%E9%9D%A2%E8%AF%95/" >面试题参考</a></li>
+			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -81,11 +89,17 @@
 					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
 				
 			
+				
+					<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+				
+			
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
 					<a class="github" href="https://github.com/Tsailor" target="_blank" rel="noopener" title="GitHub" ><i class="icon-github"></i></a>
+				
+					<a class="qq" href="/img/qq.png" title="QQ" ><i class="icon-qq"></i></a>
 				
 					<a class="mail" href="mailto:417143864@qq.com" title="NULL" ><i class="icon-mail"></i></a>
 				
@@ -125,6 +139,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -132,16 +154,26 @@
 					
 						<a class="github" target="_blank" href="https://github.com/Tsailor" title="GitHub"><i class="icon-github"></i></a>
 			        
+						<a class="qq" target="_blank" href="/img/qq.png" title="QQ"><i class="icon-qq"></i></a>
+			        
 						<a class="mail" target="_blank" href="mailto:417143864@qq.com" title="NULL"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础篇</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/React/">React篇</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/tools/">工具篇</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E9%9D%A2%E8%AF%95/">面试题参考</a></li>
 		        
 				</ul>
 			</nav>
@@ -218,7 +250,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018-2020 <a href="http://yoursite.com/" target="_blank">Tsailor</a>
+    		&copy; 2018-2020 <a href="http://tsailor.github.io/" target="_blank">Tsailor</a>
     	</div>
       	<div class="footer-right">
 			
@@ -242,7 +274,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: true
@@ -282,13 +314,21 @@
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -309,7 +349,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -318,10 +366,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
@@ -369,6 +413,13 @@
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+        
+          
+  	  		<div class="aboutme-wrap" id="aboutme">Litten，<br>毕业于徐州煤炭职业技术学院<br/>目前是一枚前端<br/><br/>胆小认生，但是不易相处，<br>年轻无为，捡破烂为生。</div>
+  	  	
+    	</section>
     
   </div>
   
@@ -442,6 +493,35 @@
   </div>
 
   
+<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
+
+<script>
+
+
+  var hoverEffect = {
+    "subNav": ".left-col .social a"
+  }
+
+
+  for (var x in hoverEffect) {
+    // 初始化data-img属性值
+    let $em = document.querySelectorAll(hoverEffect[x]);
+    $em.forEach(($a) => {
+      //console.log($a.href);
+      if (isImageType($a.href)) {
+        $a.setAttribute("data-img", $a.href)
+      }
+    })
+    // 实现悬停元素预览图片效果
+    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
+    $a.forEach(($em) => {
+      new HoverImgFx1($em)
+    })
+  }
+
+</script>
+
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>

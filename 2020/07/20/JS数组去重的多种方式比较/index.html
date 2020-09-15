@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://tsailor.github.io">
   <title>JS数组去重的多种方式比较 | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,14 +13,14 @@
   <meta name="description" content="1、双重for循环 时间复杂度（O^2）,所有方式中时间开销最大。仅仅去除数组中的基本类型元素（不包含 NaN,NaN!&#x3D;&#x3D;NaN）。 1234567891011function distinct(arr)&amp;#123;        for(let i&#x3D;0;i&lt;arr.length;i++)&amp;#123;                for(let j&#x3D;i+1;j&lt;arr.length">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS数组去重的多种方式比较">
-<meta property="og:url" content="http://yoursite.com/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:url" content="http://tsailor.github.io/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="1、双重for循环 时间复杂度（O^2）,所有方式中时间开销最大。仅仅去除数组中的基本类型元素（不包含 NaN,NaN!&#x3D;&#x3D;NaN）。 1234567891011function distinct(arr)&amp;#123;        for(let i&#x3D;0;i&lt;arr.length;i++)&amp;#123;                for(let j&#x3D;i+1;j&lt;arr.length">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-23T01:52:48.598Z">
+<meta property="article:modified_time" content="2020-09-15T02:37:40.413Z">
 <meta property="article:author" content="Tsailor">
-<meta property="article:tag" content="JS基础">
+<meta property="article:tag" content="前端基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
@@ -76,6 +76,14 @@
 			
 				<li><a href="/" >主页</a></li>
 			
+				<li><a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" >前端基础篇</a></li>
+			
+				<li><a href="/tags/React/" >React篇</a></li>
+			
+				<li><a href="/tags/tools/" >工具篇</a></li>
+			
+				<li><a href="/tags/%E9%9D%A2%E8%AF%95/" >面试题参考</a></li>
+			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -84,11 +92,17 @@
 					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
 				
 			
+				
+					<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+				
+			
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
 					<a class="github" href="https://github.com/Tsailor" target="_blank" rel="noopener" title="GitHub" ><i class="icon-github"></i></a>
+				
+					<a class="qq" href="/img/qq.png" title="QQ" ><i class="icon-qq"></i></a>
 				
 					<a class="mail" href="mailto:417143864@qq.com" title="NULL" ><i class="icon-mail"></i></a>
 				
@@ -128,6 +142,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,16 +157,26 @@
 					
 						<a class="github" target="_blank" href="https://github.com/Tsailor" title="GitHub"><i class="icon-github"></i></a>
 			        
+						<a class="qq" target="_blank" href="/img/qq.png" title="QQ"><i class="icon-qq"></i></a>
+			        
 						<a class="mail" target="_blank" href="mailto:417143864@qq.com" title="NULL"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础篇</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/React/">React篇</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/tools/">工具篇</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E9%9D%A2%E8%AF%95/">面试题参考</a></li>
 		        
 				</ul>
 			</nav>
@@ -275,7 +307,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://yoursite.com/2020/07/20/JS数组去重的多种方式比较/" title="JS数组去重的多种方式比较" target="_blank">http://yoursite.com/2020/07/20/JS数组去重的多种方式比较/</a>
+          <a href="http://tsailor.github.io/2020/07/20/JS数组去重的多种方式比较/" title="JS数组去重的多种方式比较" target="_blank">http://tsailor.github.io/2020/07/20/JS数组去重的多种方式比较/</a>
         </li>
         
         <li>
@@ -297,7 +329,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
         		</li>
       		
 		</ul>
@@ -306,58 +338,6 @@
     
 
     
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/20/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
@@ -422,7 +402,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018-2020 <a href="http://yoursite.com/" target="_blank">Tsailor</a>
+    		&copy; 2018-2020 <a href="http://tsailor.github.io/" target="_blank">Tsailor</a>
     	</div>
       	<div class="footer-right">
 			
@@ -446,7 +426,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: true
@@ -486,13 +466,21 @@
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -513,7 +501,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,10 +518,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
@@ -573,6 +565,13 @@
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+        
+          
+  	  		<div class="aboutme-wrap" id="aboutme">Litten，<br>毕业于徐州煤炭职业技术学院<br/>目前是一枚前端<br/><br/>胆小认生，但是不易相处，<br>年轻无为，捡破烂为生。</div>
+  	  	
+    	</section>
     
   </div>
   
@@ -646,6 +645,35 @@
   </div>
 
   
+<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
+
+<script>
+
+
+  var hoverEffect = {
+    "subNav": ".left-col .social a"
+  }
+
+
+  for (var x in hoverEffect) {
+    // 初始化data-img属性值
+    let $em = document.querySelectorAll(hoverEffect[x]);
+    $em.forEach(($a) => {
+      //console.log($a.href);
+      if (isImageType($a.href)) {
+        $a.setAttribute("data-img", $a.href)
+      }
+    })
+    // 实现悬停元素预览图片效果
+    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
+    $a.forEach(($em) => {
+      new HoverImgFx1($em)
+    })
+  }
+
+</script>
+
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>
