@@ -1,6 +1,6 @@
 ---
     title: JS手动实现new
-    tags: JS基础
+    tags: 前端基础
     date: 2020-6-30
 ---
 new 构造函数() 

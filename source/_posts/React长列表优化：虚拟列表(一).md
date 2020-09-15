@@ -44,7 +44,7 @@ router.get('/test',async ctx=>{
 app.use(router.routes());
 app.listen(8080)
 ```
-<!--more-->
+
 步骤2：接受后端数据,并传入到子组件
 ```javascript
 const useData = ()=>{

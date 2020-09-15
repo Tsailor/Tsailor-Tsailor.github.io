@@ -44,7 +44,7 @@ app.use(router.routes());
 app.listen(8080)
 ```
 由于React项目是以服务的方式启动的，所以配置package.json，添加` "proxy": "http://localhost:8080"` 
-<!--more-->
+
 或者使用CORS跨域来做,二选一即可
 ```javascript
 const cors = require('koa2-cors'); //跨域处理

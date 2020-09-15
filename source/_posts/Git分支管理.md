@@ -1,7 +1,9 @@
 ---
-    title: Git分支管理
-    date: 2020-07-23
-    tags: git
+title: Git分支管理
+date: 2020-07-23
+tags: 
+- tools
+- git
 ---
 1、git创建本地分支：`git branch [name]` 
 2、git删除本地分支：`git branch -d [name]`
