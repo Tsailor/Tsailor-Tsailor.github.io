@@ -117,5 +117,5 @@ theme: yilia-plus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:tsailor.github.io.git
+  repository: git@github.com:Tsailor/Tsailor.github.io.git
   branch: master
