@@ -196,6 +196,95 @@
             
 
   
+    <article id="post-Redux请求中间件如何处理并发操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/09/18/Redux%E8%AF%B7%E6%B1%82%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C/">Redux请求中间件如何处理并发操作？</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/09/18/Redux%E8%AF%B7%E6%B1%82%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+        <time datetime="2020-09-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="Redux请求中间件如何处理并发操作？"><a href="#Redux请求中间件如何处理并发操作？" class="headerlink" title="Redux请求中间件如何处理并发操作？"></a>Redux请求中间件如何处理并发操作？</h2><p>问题提出背景：有一个数组A，然后让你根据数组A的每一项发起一个请求，拿到所有项的返回结果后，组装起来渲染视图</p>
+<p>思路：利用redux-thunk中间件来操作，redux-thunk使得 dispatch()得到增强，能接收一个函数，在这个函数里使用promise.all()执行完异步操作后，再dispatch一个action对象。</p>
+    
+    <a class="article-more-a" href="/2020/09/18/Redux%E8%AF%B7%E6%B1%82%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/09/18/Redux%E8%AF%B7%E6%B1%82%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React长列表优化：虚拟列表(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -991,96 +1080,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS深拷贝与浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">JS深拷贝与浅拷贝</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-        <time datetime="2020-06-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>JS数据类型划分：<br>基本数据类型：string,number,boolean,null,undefined<br>引用数据类型：Object(包括 Array,String,Function,Math,Date等)</p>
-<p>JS内存分为堆（heap）和栈（stack）<br>栈：由系统自动分配，自动回收，效率高，但容量小。<br>堆：由程序员手动分配内存，并且手动销毁（高级语言如JS中有垃圾自动回收机制），效率不如栈，但容量大。</p>
-<p>JS的基本类型分配在栈中。</p>
-    
-    <a class="article-more-a" href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/06/26/JS%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">展开全文 >></a>
     </p>
     
 
