@@ -196,6 +196,95 @@
             
 
   
+    <article id="post-JS手动实现new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/">JS手动实现new</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/" class="archive-article-date">
+        <time datetime="2020-06-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>new 构造函数()<br>执行顺序<br>1、在堆内存开辟对象内存空间，命名为obj;<br>2、在obj中添加<strong>proto</strong>属性，指向 构造函数.prototype;<br>3、更改this指向，将构造函数内的this指向obj;<br>4、执行构造函数内语句；<br>5、若构造函数内没有return或者没有return this、return基本数据类型的值，则返回obj在堆内存中地址;若return引用类型，则返回这个引用类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;    </span><br><span class="line">    <span class="keyword">this</span>.name=name;   </span><br><span class="line">    <span class="keyword">this</span>.age=age;    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">12</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per=<span class="keyword">new</span> Person(<span class="string">"jack"</span>,<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(per);      <span class="comment">//Person &#123; name: "jack", age: 18&#125;</span></span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/06/30/JS%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0new/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JS深拷贝与浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
