@@ -1,11 +1,7 @@
 ﻿# Header-菜单
 menu:
   主页: /
-  前端基础篇: /tags/前端基础/
-  React篇: /tags/React/
-  工具篇: /tags/tools/
-  面试题参考: /tags/面试/
-  
+ 
 # subNav-子导航
 subNav:
   github: "https://github.com/Tsailor"
@@ -14,7 +10,7 @@ subNav:
   #csdn: "#"
   #rss: "#"
   #zhihu: "#"
-  qq: "img/qq.png"
+  #qq: "img/2434387555.jpg"
   #weixin: "img/weixin_.png"
   #weibo: "#"
   #douban: "#"
@@ -31,7 +27,7 @@ subNav:
 hover_effect:
   ## `global` 0: Set separately, 1: Enable global 2: Close global
   ## `global` 0: 分开设置, 1: 全局启用, 2: 全局关闭
-  global: 1
+  global: 2
   # SubNav-导航
   subNav: true
 
@@ -91,7 +87,7 @@ favicon: /img/favicon.ico
 avatar: /img/avatar.jpg
 
 # 是否开启分享
-share_jia: false
+share_jia: true
 
 # 评论：1、畅言；2、Disqus；3、Gitment；4、Giteement
 # 不需要使用某项，直接设置值为false，或注释掉
@@ -244,7 +240,7 @@ style:
     # 是否启用左侧边栏动态图效果
     enable: false
     # 自定义背景图路径(默认可以不设置，提供默认背景图)
-    #path: /img/back.jpg
+    # path: /img/biubiubiu.gif
   # 右滑板块背景
   slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
 
@@ -260,11 +256,11 @@ slider:
 #  friends: false
 smart_menu:
   innerArchive: '所有文章'
-  aboutme: '关于我'
+  
   
 
 # 友情链接
 
 
 # 关于我
-aboutme: Litten，<br>毕业于徐州煤炭职业技术学院<br/>目前是一枚前端<br/><br/>胆小认生，但是不易相处，<br>年轻无为，捡破烂为生。
+
