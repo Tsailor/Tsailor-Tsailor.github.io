@@ -15,8 +15,9 @@ date: 2020-07-22
 webpack和babel在打包的时候不会包括到源码里，所以是 - div  
 系统提示说："-dev"已经不推荐使用了，使用 "--only=dev"代替  
 webpack-cli 包含了许多webpack的指令。  
-<!--more-->
 
+
+<!--more-->
 4、 安装babel     
 `npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --only=dev`
 @babel/core 这是babel的核心库   
@@ -86,7 +87,7 @@ package.json中，scripts标签里加入
     { loader: 'style-loader' },   //  将style插入到模板里
     {
       loader: 'css-loader',    //   解析css
-      options: {s
+      options: {
         modules: true
       }
     }
@@ -94,6 +95,22 @@ package.json中，scripts标签里加入
 ```
 13、抽离css样式到独立的文件```javascript npm install --save-dev mini-css-extract-plugin```    
   配置参照npm文档  
+```javascript
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+```
+plugins里面加入 
+```javascript
+ plugins: [new MiniCssExtractPlugin()],
+```
+修改rules 中的css-loader
+```
+ rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+```
 
 
 

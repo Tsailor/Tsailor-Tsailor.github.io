@@ -14,6 +14,11 @@ const Router = require('koa-router'); //路由模块
 const app = new Koa();
 const router = new Router();
 
+```
+
+<!--more-->
+
+```javascript
 router.get('/api/getMock',async ctx =>{
     let list = [];
     function getRandomWords(n) {
