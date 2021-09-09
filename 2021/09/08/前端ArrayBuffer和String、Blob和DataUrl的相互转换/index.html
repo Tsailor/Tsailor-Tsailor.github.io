@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tsailor.github.io">
-  <title>前端ArrayBuffer和String的相互转换 | Blog</title>
+  <title>前端ArrayBuffer和String、Blob和DataUrl的相互转换 | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。记录一下 1234567891011121314151617&#x2F;** * @description 将ArrayBuffer对象转换成string * @param &amp;#123;ArrayBuffer&amp;#125; buf - ArrayBuffer">
+  <meta name="description" content="在之前写公司的业务的时候有这样的一个需求，通过XMLHttpRequest拿到图片的二进制内容。然后将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。记录一下 1234567891011121314151617&#x2F;** * @description 将ArrayBuffer对象转换成string * @param &amp;#123;ArrayB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端ArrayBuffer和String的相互转换">
-<meta property="og:url" content="http://tsailor.github.io/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:title" content="前端ArrayBuffer和String、Blob和DataUrl的相互转换">
+<meta property="og:url" content="http://tsailor.github.io/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E3%80%81Blob%E5%92%8CDataUrl%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。记录一下 1234567891011121314151617&#x2F;** * @description 将ArrayBuffer对象转换成string * @param &amp;#123;ArrayBuffer&amp;#125; buf - ArrayBuffer">
+<meta property="og:description" content="在之前写公司的业务的时候有这样的一个需求，通过XMLHttpRequest拿到图片的二进制内容。然后将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。记录一下 1234567891011121314151617&#x2F;** * @description 将ArrayBuffer对象转换成string * @param &amp;#123;ArrayB">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-09T03:39:09.642Z">
+<meta property="article:modified_time" content="2021-09-09T07:50:54.351Z">
 <meta property="article:author" content="Tsailor">
 <meta property="article:tag" content="前端基础">
 <meta name="twitter:card" content="summary">
@@ -192,21 +192,21 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-前端ArrayBuffer和String的相互转换" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-前端ArrayBuffer和String、Blob和DataUrl的相互转换" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      前端ArrayBuffer和String的相互转换
+      前端ArrayBuffer和String、Blob和DataUrl的相互转换
     </h1>
   
 
 
   
   
-<a href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
+<a href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E3%80%81Blob%E5%92%8CDataUrl%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
         <time datetime="2021-09-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-08</time>
 </a>
 
@@ -220,7 +220,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">187字</span>
+      <span class="post-count">481字</span>
     </span>
   </span>
 
@@ -229,7 +229,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -240,13 +240,14 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。<br>记录一下</p>
+    <p>在之前写公司的业务的时候有这样的一个需求，通过XMLHttpRequest拿到图片的二进制内容。然后将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。<br>记录一下</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将ArrayBuffer对象转换成string</span></span><br><span class="line"><span class="comment"> * @param &#123;ArrayBuffer&#125; buf - ArrayBuffer对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bufferToString</span>(<span class="params">buf</span>): <span class="title">Promise</span>&lt;<span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([buf], &#123; <span class="keyword">type</span>: <span class="string">"application/octet-stream"</span> &#125;);</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> result = event.target.result <span class="keyword">as</span> <span class="built_in">string</span>;</span><br><span class="line">      <span class="comment">// console.log("result",result);</span></span><br><span class="line">      resolve(result);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsText(blob, <span class="string">"utf-8"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将string转换成ArrayBuffer</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; str - 参数string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stringToBuffer</span>(<span class="params">str</span>): <span class="title">Promise</span>&lt;<span class="title">ArrayBuffer</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([str], &#123; <span class="keyword">type</span>: <span class="string">"text/plain"</span> &#125;);</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> result = event.target.result <span class="keyword">as</span> <span class="built_in">ArrayBuffer</span>;</span><br><span class="line">      <span class="comment">// console.log("result",result);</span></span><br><span class="line">      resolve(result);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsArrayBuffer(blob);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<p>但是问题并没有完全解决，原因大概是，图片二进制内容ArrayBuffer转换成string类型，通过utf-8编码生成的乱码，再转换回去时候，二进制数据内容和长度发生了变化。<br>于是，我结合另一个情景，前端图片经常使用DataUrl表示(DataUlr使用的也就是Base64编码)，所以我把图片转成成DataUrl，保存的时候存下这个DataUrl,使用的时候再转换成二进制内容。<br>于是， 设置 <code>XMLHttpRequest.responseType = &#39;blob&#39;;</code><br>然后问题就变成了 Blob 与 DataUrl的转换</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将blob转换成DataUrl</span></span><br><span class="line"><span class="comment"> * @param &#123;Blob&#125; blob - blob</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blobToDataUrl</span>(<span class="params">blob: Blob</span>): <span class="title">Promise</span>&lt;<span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> result = event.target.result <span class="keyword">as</span> <span class="built_in">string</span>;</span><br><span class="line">      <span class="comment">// console.log("result",result);</span></span><br><span class="line">      resolve(result);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsDataURL(blob);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将DataUrl转换成Blob</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; dataurl - 参数dataurl （base64编码）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataUrlToBlob</span>(<span class="params">dataurl: <span class="built_in">string</span></span>): <span class="title">Promise</span>&lt;<span class="title">Blob</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arr = dataurl.split(<span class="string">","</span>),</span><br><span class="line">      mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span><br><span class="line">      bstr = atob(arr[<span class="number">1</span>]),</span><br><span class="line">      n = bstr.length,</span><br><span class="line">      u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">      u8arr[n] = bstr.charCodeAt(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> blob = <span class="keyword">new</span> Blob([u8arr], &#123; <span class="keyword">type</span>: mime &#125;);</span><br><span class="line">    resolve(blob);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
 
     
@@ -287,7 +288,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://tsailor.github.io/2021/09/08/前端ArrayBuffer和String的相互转换/" title="前端ArrayBuffer和String的相互转换" target="_blank">http://tsailor.github.io/2021/09/08/前端ArrayBuffer和String的相互转换/</a>
+          <a href="http://tsailor.github.io/2021/09/08/前端ArrayBuffer和String、Blob和DataUrl的相互转换/" title="前端ArrayBuffer和String、Blob和DataUrl的相互转换" target="_blank">http://tsailor.github.io/2021/09/08/前端ArrayBuffer和String、Blob和DataUrl的相互转换/</a>
         </li>
         
         <li>
