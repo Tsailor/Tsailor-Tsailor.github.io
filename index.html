@@ -196,6 +196,95 @@
             
 
   
+    <article id="post-前端ArrayBuffer和String的相互转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">前端ArrayBuffer和String的相互转换</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
+        <time datetime="2021-09-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-08</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。<br>记录一下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将ArrayBuffer对象转换成string</span></span><br><span class="line"><span class="comment"> * @param &#123;ArrayBuffer&#125; buf - ArrayBuffer对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bufferToString</span>(<span class="params">buf</span>): <span class="title">Promise</span>&lt;<span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([buf], &#123; <span class="keyword">type</span>: <span class="string">"application/octet-stream"</span> &#125;);</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> result = event.target.result <span class="keyword">as</span> <span class="built_in">string</span>;</span><br><span class="line">      <span class="comment">// console.log("result",result);</span></span><br><span class="line">      resolve(result);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsText(blob, <span class="string">"utf-8"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-如何实现useState改变值之后立刻获取最新的状态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -968,98 +1057,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2020/07/23/DOM%E6%93%8D%E4%BD%9C-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%95%B0%E7%9B%AE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git分支管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/">Git分支管理</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" class="archive-article-date">
-        <time datetime="2020-07-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1、git创建本地分支：<code>git branch [name]</code><br>2、git删除本地分支：<code>git branch -d [name]</code><br>3、git切换分支：<code>git checkout [name]</code><br>4、git创建并切换到新的本地分支：<code>git checkout -b [name]</code><br>5、git查看所有分支信息：<code>git branch -a</code> </p>
-    
-    <a class="article-more-a" href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/07/23/Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/">展开全文 >></a>
     </p>
     
 

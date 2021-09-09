@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tsailor.github.io">
-  <title>Archives: 2021 | Blog</title>
+  <title>前端ArrayBuffer和String的相互转换 | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="沉默寡言是亮仔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="http://tsailor.github.io/archives/2021/index.html">
+  <meta name="description" content="在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。记录一下 1234567891011121314151617&#x2F;** * @description 将ArrayBuffer对象转换成string * @param &amp;#123;ArrayBuffer&amp;#125; buf - ArrayBuffer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端ArrayBuffer和String的相互转换">
+<meta property="og:url" content="http://tsailor.github.io/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="沉默寡言是亮仔">
+<meta property="og:description" content="在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。记录一下 1234567891011121314151617&#x2F;** * @description 将ArrayBuffer对象转换成string * @param &amp;#123;ArrayBuffer&amp;#125; buf - ArrayBuffer">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-09T03:39:09.642Z">
 <meta property="article:author" content="Tsailor">
+<meta property="article:tag" content="前端基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
@@ -189,41 +192,118 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-前端ArrayBuffer和String的相互转换" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      前端ArrayBuffer和String的相互转换
+    </h1>
+  
+
+
+  
+  
 <a href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
         <time datetime="2021-09-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-08</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">187字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>在之前写公司的业务的时候有这样的一个需求，将ArrayBuffer中的数据暂存在JSON中，所以需要涉及到ArrayBuffer和String的相互转换。<br>记录一下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将ArrayBuffer对象转换成string</span></span><br><span class="line"><span class="comment"> * @param &#123;ArrayBuffer&#125; buf - ArrayBuffer对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bufferToString</span>(<span class="params">buf</span>): <span class="title">Promise</span>&lt;<span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([buf], &#123; <span class="keyword">type</span>: <span class="string">"application/octet-stream"</span> &#125;);</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> result = event.target.result <span class="keyword">as</span> <span class="built_in">string</span>;</span><br><span class="line">      <span class="comment">// console.log("result",result);</span></span><br><span class="line">      resolve(result);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsText(blob, <span class="string">"utf-8"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 将string转换成ArrayBuffer</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; str - 参数string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stringToBuffer</span>(<span class="params">str</span>): <span class="title">Promise</span>&lt;<span class="title">ArrayBuffer</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([str], &#123; <span class="keyword">type</span>: <span class="string">"text/plain"</span> &#125;);</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> result = event.target.result <span class="keyword">as</span> <span class="built_in">ArrayBuffer</span>;</span><br><span class="line">      <span class="comment">// console.log("result",result);</span></span><br><span class="line">      resolve(result);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    reader.readAsArrayBuffer(blob);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/09/08/%E5%89%8D%E7%AB%AFArrayBuffer%E5%92%8CString%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">前端ArrayBuffer和String的相互转换</a>
-	
-    </h1>
-  
+      </a>
+    </div>
+    
 
-
-        <div class="article-info info-on-right">
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Tsailor
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://tsailor.github.io/2021/09/08/前端ArrayBuffer和String的相互转换/" title="前端ArrayBuffer和String的相互转换" target="_blank">http://tsailor.github.io/2021/09/08/前端ArrayBuffer和String的相互转换/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -235,105 +315,55 @@
 		</ul>
 	</div>
 
-          
+    
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/09/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0useState%E6%94%B9%E5%8F%98%E5%80%BC%E4%B9%8B%E5%90%8E%E7%AB%8B%E5%88%BB%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E7%8A%B6%E6%80%81/" class="archive-article-date">
-        <time datetime="2021-09-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0useState%E6%94%B9%E5%8F%98%E5%80%BC%E4%B9%8B%E5%90%8E%E7%AB%8B%E5%88%BB%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E7%8A%B6%E6%80%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何实现useState改变值之后立刻获取最新的状态</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/09/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0useState%E6%94%B9%E5%8F%98%E5%80%BC%E4%B9%8B%E5%90%8E%E7%AB%8B%E5%88%BB%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E7%8A%B6%E6%80%81/">如何实现useState改变值之后立刻获取最新的状态</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/30/%E5%85%B3%E4%BA%8EPromise.all%E7%9A%84%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-        <time datetime="2021-08-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/30/%E5%85%B3%E4%BA%8EPromise.all%E7%9A%84%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">关于Promise.all的并发控制</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
 
 
           </div>
@@ -362,8 +392,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
