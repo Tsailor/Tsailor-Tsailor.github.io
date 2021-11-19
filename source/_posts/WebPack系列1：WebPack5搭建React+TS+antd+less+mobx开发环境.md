@@ -1,5 +1,5 @@
 ---
-title: WebPack系列1：WebPack5搭建React+TS+antd+less开发环境
+title: WebPack系列1：WebPack5搭建React+TS+antd+less+mobx开发环境
 tags: 
 - tools
 - webpack
@@ -430,11 +430,37 @@ You may need an appropriate loader to handle this file type, currently no loader
 
 至此，WebPack5 搭建 React+TS+antd+less 开发环境 暂且完成。
 
+接下来项目中引入mobx状态管理库
+## mobx##
+
+安装 `yarn add mobx mobx-react -S` 
+安装 `yarn add @babel/plugin-proposal-decorators -D` 解析装饰器语法的loader
+
+配置 .babelrc文件
+```
+{
+
+  "plugins": [
+    // ...省略其他
+    
+    // 新增以下内容
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ]
+  ]
+}
+```
+
+配置tsconfig.json 中,开启实验阶段的装饰器语法
+"compilerOptions"中加入 `"experimentalDecorators":true,`
 愿天堂没有配置
 ⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺
 
 <details>
-<summary>附录一.webpack.config.js</summary>
+<summary>附录：webpack.config.js</summary>
 <br>
 ```
 const path = require("path");
