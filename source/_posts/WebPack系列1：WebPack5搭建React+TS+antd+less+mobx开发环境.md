@@ -456,6 +456,15 @@ You may need an appropriate loader to handle this file type, currently no loader
 
 配置tsconfig.json 中,开启实验阶段的装饰器语法
 "compilerOptions"中加入 `"experimentalDecorators":true,`
+
+如果mobx的版本>=6
+请为store加上 
+```
+constructor() {
+  makeObservable(this);
+}
+```
+
 愿天堂没有配置
 ⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺⛺
 
