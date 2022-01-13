@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tsailor.github.io">
-  <title>Tag: eslint | Blog</title>
+  <title>关于babel的那些事情 | Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="沉默寡言是亮仔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="http://tsailor.github.io/tags/eslint/index.html">
+  <meta name="description" content="最近学习到了 babel, 看到一些好文章，mark标记一下。 @babel&#x2F;core babel编译器。被拆分三个模块：@babel&#x2F;parser、@babel&#x2F;traverse、@babel&#x2F;generator @babel&#x2F;parser: 接受源码，进行词法分析、语法分析，生成AST。@babel&#x2F;traverse：接受一个AST，并对其遍历，根据preset、plugin进行逻辑处理，进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于babel的那些事情">
+<meta property="og:url" content="http://tsailor.github.io/2022/01/13/%E5%85%B3%E4%BA%8Ebabel%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="沉默寡言是亮仔">
+<meta property="og:description" content="最近学习到了 babel, 看到一些好文章，mark标记一下。 @babel&#x2F;core babel编译器。被拆分三个模块：@babel&#x2F;parser、@babel&#x2F;traverse、@babel&#x2F;generator @babel&#x2F;parser: 接受源码，进行词法分析、语法分析，生成AST。@babel&#x2F;traverse：接受一个AST，并对其遍历，根据preset、plugin进行逻辑处理，进行">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-13T06:50:18.892Z">
 <meta property="article:author" content="Tsailor">
+<meta property="article:tag" content="tools">
+<meta property="article:tag" content="babel">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
@@ -189,41 +193,118 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于babel的那些事" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/01/04/ESlint%E7%BB%9F%E4%B8%80%E5%9B%A2%E9%98%9F%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83/" class="archive-article-date">
-        <time datetime="2022-01-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2022/01/04/ESlint%E7%BB%9F%E4%B8%80%E5%9B%A2%E9%98%9F%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83/">ESlint 统一团队代码风格规范</a>
-	
+    <h1 class="article-title" itemprop="name">
+      关于babel的那些事情
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+<a href="/2022/01/13/%E5%85%B3%E4%BA%8Ebabel%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" class="archive-article-date">
+        <time datetime="2022-01-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">139字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>最近学习到了 babel, 看到一些好文章，mark标记一下。</p>
+<p>@babel/core</p>
+<p>babel编译器。被拆分三个模块：@babel/parser、@babel/traverse、@babel/generator</p>
+<p>@babel/parser: 接受源码，进行词法分析、语法分析，生成AST。<br>@babel/traverse：接受一个AST，并对其遍历，根据preset、plugin进行逻辑处理，进行替换、删除、添加节点。<br>@babel/generator：接受最终生成的AST，并将其转换为 代码字符串，，同时此过程也可以创建source map。</p>
+<a id="more"></a>
+<p><a href="babel深入教程">https://zhuanlan.zhihu.com/p/72995336</a><br><a href="babel,babel-core的关系">https://www.zhihu.com/question/277409645</a><br><a href="babel教程">https://www.jiangruitao.com/babel/babel-core/</a></p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Tsailor
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://tsailor.github.io/2022/01/13/关于babel的那些事/" title="关于babel的那些事情" target="_blank">http://tsailor.github.io/2022/01/13/关于babel的那些事/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -233,25 +314,61 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">eslint</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">babel</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2022/01/04/ESlint%E7%BB%9F%E4%B8%80%E5%9B%A2%E9%98%9F%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ESlint 统一团队代码风格规范</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -280,9 +397,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,
